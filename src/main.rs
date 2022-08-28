@@ -31,7 +31,8 @@ fn handle_connection(mut stream:TcpStream){
         let status_line ="HTTP/1.1 404 not found";
         let contents = fs::read_to_string("404.html").unwrap();
         let response = format!(
-        "http/1.1 200 ok\r\nContent length: {}\r\n\r\n{}",
+        "{}\r\nContent length: {}\r\n\r\n{}",
+        status_line,
         contents.len(),
         contents
     );
